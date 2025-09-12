@@ -17,7 +17,12 @@ def base(request):
   return render(request,'base.html')
 
 def about(request):
-  return render(request,'about.html')
+  all_post=Post.objects.all
+  all_Member=Member.objects.all
+  context = {"all1": all_Member ,
+                "all2":all_post}
+  return render(request,"about.html",context)
+
 
 def blogpost(request):
   post = Post.objects.filter(slug=slug).first() # type: ignore
