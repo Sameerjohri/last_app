@@ -1,36 +1,57 @@
-{% extends "base.html" %} {% block body %}
-<h1>home</h1>
+{% extends "base.html" %}
 
-{% for i in all1 %}
-<h1>Member</h1>
-<br />
-{{i.fname}}
+<div class="container">
+  {% block body %}
+  <div class="container">
+    <h1>Latest Blog Posts</h1>
+</div>
+<div class="container">
+{% for i in all2 %}
+    <div class="card" style="width: 18rem">
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{i.title | truncatechars:50}}</h5>
+        <p class="card-text">
+          {{i.content | truncatechars:100}}
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
 
-<br />
-{{i.lname}}
-<br />
-{{i.email}}
-<br />
-{{i.age}}
-<hr />
+    {% for i in all1 %}
+    <h1>Member</h1>
+    <br />
+    {{i.fname}}
 
-{% endfor %} {% for i in all2 %}
-<h1>Post</h1>
-<br />
-{{i.title}}
-<br />
-{{i.author}}
-<br />
-{{i.content}}
-<br />
-{{i.timeStamp}}
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-{% endfor %} {% for post in all2 %} {{post.author}} {{ post.timeStamp }}
-{{post.title }} {{post.content | truncatechars:200}}
-<a href="{% url 'blogpost' post.slug %}">Continue Reading</a>
-{% endfor %} {% endblock body %}
+    <br />
+    {{i.lname}}
+    <br />
+    {{i.email}}
+    <br />
+    {{i.age}}
+    <hr />
+
+    {% endfor %} {% for i in all2 %}
+    <h1>Post</h1>
+    <br />
+    {{i.title}}
+    <br />
+    {{i.author}}
+    <br />
+    {{i.content}}
+    <br />
+    {{i.timeStamp}}
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+    {% endfor %} {% for post in all2 %} {{post.author}} {{ post.timeStamp }}
+    {{post.title }} {{post.content | truncatechars:200}}
+    <a href="{% url 'blogpost' post.slug %}">Continue Reading</a>
+    {% endfor %} {% endblock body %}
+  </div>
+</div>
