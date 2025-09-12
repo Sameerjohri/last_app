@@ -24,7 +24,7 @@ def about(request):
   return render(request,"about.html",context)
 
 
-def blogpost(request):
+def blogpost(request,slug):
   post = Post.objects.filter(slug=slug).first() # type: ignore
   context = {'post':post}
   return render(request,'blogpost.html',context)
