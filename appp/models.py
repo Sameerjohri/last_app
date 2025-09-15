@@ -1,10 +1,16 @@
 from django.db import models # type: ignore
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Post(models.Model):
   sno = models.AutoField(primary_key=True)
   title = models.CharField(max_length = 255)
-  content = models.TextField()
+  # content = models.TextField()
+  newcontent=RichTextField(
+    config_name="default",
+    max_length=300000,
+    blank=True,
+  )
   author = models.CharField(max_length=15)
   slug = models.CharField(max_length=150)
   timeStamp = models.DateTimeField(blank=True)

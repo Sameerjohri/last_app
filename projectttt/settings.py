@@ -17,7 +17,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ["last-app-1.onrender.com"]
+ALLOWED_HOSTS = ['last-app-1.onrender.com','127.0.0.1']
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appp'
+    'appp',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +118,9 @@ STATICFILES_DIRS = [
 BASE_DIR / "static",
 "/var/www/static/",
 ]
+
+
+CKEDITOR_UPLOAD_PATH="uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
